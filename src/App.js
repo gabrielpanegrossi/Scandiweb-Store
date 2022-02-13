@@ -14,15 +14,12 @@ import Home from './containers/home';
 import OpacityOverContent from './components/opacityOverContent';
 import attributesAreEqual from './services/comparison/compareProducts';
 
-const { REACT_APP_GRAPHQL_URL } = process.env;
-
-console.log(REACT_APP_GRAPHQL_URL);
 export default class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      selectedCurrency: { label: 'USD', symbol: '$' },
+      selectedCurrency: {},
       cartItems: [],
       showOpacityOverContent: false,
     };
@@ -30,7 +27,11 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const lastCart = JSON.parse(localStorage.getItem('cartArr'));
-    this.setState({ cartItems: lastCart || [] });
+    const lastCurrency = JSON.parse(localStorage.getItem('currency'));
+    this.setState({
+      cartItems: lastCart || [],
+      selectedCurrency: lastCurrency || { label: 'USD', symbol: '$' },
+    });
   }
 
   setCartStorage = () => {
@@ -40,6 +41,7 @@ export default class App extends React.Component {
 
   changeSelectedCurrency = (currencyLabel) => {
     this.setState({ selectedCurrency: currencyLabel });
+    localStorage.setItem('currency', JSON.stringify(currencyLabel));
   };
 
   insertCartItem = (item) => {

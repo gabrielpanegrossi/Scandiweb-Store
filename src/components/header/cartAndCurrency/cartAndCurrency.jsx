@@ -15,7 +15,6 @@ export default class CartAndCurrency extends React.Component {
     super(props);
     this.state = {
       currencyArr: [],
-      currentCurrency: '$',
     };
   }
 
@@ -37,7 +36,7 @@ export default class CartAndCurrency extends React.Component {
   }
 
   render() {
-    const { currentCurrency, currencyArr } = this.state;
+    const { currencyArr } = this.state;
     const { toggleOpacityOverContent, cartItems, selectedCurrency } = this.context;
 
     return (
@@ -45,7 +44,7 @@ export default class CartAndCurrency extends React.Component {
         <ul>
           <li className='currency-menu-trigger'>
             <div className='currency-wrapper'>
-              <span>{currentCurrency}</span>
+              <span>{selectedCurrency.symbol}</span>
               <BsChevronDown />
             </div>
             <div className='currency-submenu'>
@@ -55,7 +54,6 @@ export default class CartAndCurrency extends React.Component {
                     <button
                       onClick={() => {
                         this.changeSelectedCurrency({ label: el.label, symbol: el.symbol });
-                        this.setState({ currentCurrency: el.symbol });
                       }}
                       type='button'
                     >

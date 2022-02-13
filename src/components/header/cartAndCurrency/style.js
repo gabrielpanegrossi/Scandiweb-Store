@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const CartAndCurrencyContainer = styled.div`
-  width: 30%;
-
   &,
   > ul,
   & > ul > li {
@@ -150,6 +148,8 @@ export const CartAndCurrencyContainer = styled.div`
   }
 
   @media (min-width: 769px) {
+    width: 30%;
+
     ul .cart-box-trigger {
       position: relative;
 

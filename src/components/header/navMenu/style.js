@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const NavContainer = styled.nav`
   height: 100%;
-  width: 30%;
 
   ul {
     display: flex;
@@ -39,6 +38,8 @@ export const NavContainer = styled.nav`
   }
 
   @media (min-width: 769px) {
+    width: 30%;
+
     ul {
       padding-bottom: 0;
     }
