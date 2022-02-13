@@ -1,10 +1,16 @@
 // globalStyles.js
 import { createGlobalStyle } from 'styled-components';
-import * as variable from './lib';
+// import * as variable from './lib';
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
+
 *, *:before, *:after {
     box-sizing: border-box;
+}
+
+*{
+  font-family: 'Raleway', sans-serif;
 }
 
 a{
@@ -20,7 +26,7 @@ ol, ul {
   list-style: none;
 }
 
-header, main, footer{
+main, footer{
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -34,7 +40,7 @@ main{
   padding: ${'20px'};
 }
 
-button{
+button, a{
   cursor: pointer;
 }
 

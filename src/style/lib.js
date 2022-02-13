@@ -1,5 +1,5 @@
-export const indent_base = '20px';
+export const indentBase = '20px';
 
-export const font_base = '16px';
+export const fontBase = '16px';
 
 export const color = '20px';
