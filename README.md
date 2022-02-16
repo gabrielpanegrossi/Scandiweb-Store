@@ -1,6 +1,6 @@
 # Scandi Store
 
-Is a eccomerce store built from scratch in React.js for a React job position for ScandiWeb.
+Is a ecommerce store built from scratch in React.js for a React job position on ScandiWeb.
 
 On this store you will be able to add products to your cart, selecting the products attributes and also quantity, navigating throught category pages with an great and smooth experience.
 
