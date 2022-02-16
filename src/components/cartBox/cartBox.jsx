@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 
 import * as S from './style';
 import GeneralContext from '../../context/generalContext';
-import getCurrencyFromList from '../../services/currency/getCurrencyFromList';
+import getPriceAndCurrencyFromList from '../../services/currency/getPriceAndCurrencyFromList';
 import AttributeHandler from '../attributeHandler/attributeHandler';
 
 export default class CartBox extends React.Component {
@@ -26,8 +26,7 @@ export default class CartBox extends React.Component {
                     <h5>{item.productObj.brand}</h5>
                   </div>
                   <span>
-                    {`${selectedCurrency.symbol} `}
-                    {getCurrencyFromList(item.productObj.prices, selectedCurrency.label, true)}
+                    {getPriceAndCurrencyFromList(item.productObj.prices, selectedCurrency)}
                   </span>
                   {item.productObj.attributes && (
                     <ul>

@@ -3,8 +3,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-import getCurrencyFromList from '../../../services/currency/getCurrencyFromList';
+import getPriceAndCurrencyFromList from '../../../services/currency/getPriceAndCurrencyFromList';
 import AddToCardButton from '../../addToCartButton';
+import OutOfStockOverlay from '../../outOfStockOverlay';
 import ProductCardContainer from './style';
 
 export default class ProductCard extends React.Component {
@@ -14,20 +15,16 @@ export default class ProductCard extends React.Component {
     return (
       <ProductCardContainer>
         <Link to={`/product/${productInformation.id}`}>
-          {productInformation.inStock ? (
-            <div className='out-of-stock'>
-              <span>out of stock</span>
-            </div>
-          ) : null}
+          {!productInformation.inStock ? <OutOfStockOverlay /> : null}
           <div className='img-handler'>
             <img src={productInformation.gallery[0]} alt='' />
           </div>
           <div>
             <h3>{productInformation.name}</h3>
-            <span>{getCurrencyFromList(productInformation.prices, currentCurrency.label)}</span>
+            <span>{getPriceAndCurrencyFromList(productInformation.prices, currentCurrency)}</span>
           </div>
         </Link>
-        {!productInformation.inStock && !productInformation.attributes.length > 0 ? (
+        {productInformation.inStock && !productInformation.attributes.length > 0 ? (
           <AddToCardButton
             productAttributesAreFilled
             addToCartObject={{ id: productInformation.id }}

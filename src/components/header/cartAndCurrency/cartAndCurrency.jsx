@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { BsCart2, BsChevronDown } from 'react-icons/bs';
 import CartBox from '../../cartBox/cartBox';
-import getCurrencyFromList from '../../../services/currency/getCurrencyFromList';
+import getPriceAndCurrencyFromList from '../../../services/currency/getPriceAndCurrencyFromList';
 
 import * as S from './style';
 import GeneralContext from '../../../context/generalContext';
@@ -93,15 +93,11 @@ export default class CartAndCurrency extends React.Component {
                 <span>Total</span>
                 <span>
                   {cartItems.length > 0
-                    ? `${selectedCurrency.label} ${cartItems
+                    ? `${cartItems
                         .map(
                           (item) =>
                             item.quantity *
-                            getCurrencyFromList(
-                              item.productObj.prices,
-                              selectedCurrency.label,
-                              true
-                            )
+                            getPriceAndCurrencyFromList(item.productObj.prices, selectedCurrency)
                         )
                         .reduce((acc, current) => acc + current)
                         .toFixed(2)}`

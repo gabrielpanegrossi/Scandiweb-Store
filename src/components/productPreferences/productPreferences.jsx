@@ -2,9 +2,10 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import propTypes from 'prop-types';
+import parse from 'html-react-parser';
 
 import CurrencyContext from '../../context/currencyContext';
-import getCurrencyFromList from '../../services/currency/getCurrencyFromList';
+import getPriceAndCurrencyFromList from '../../services/currency/getPriceAndCurrencyFromList';
 import AttributeHandler from '../attributeHandler/attributeHandler';
 import AddToCardButton from '../addToCartButton/addToCardButton';
 import ProductPreferencesContainer from './style';
@@ -14,6 +15,8 @@ export default class ProductPreferences extends React.Component {
     const { selectedCurrency } = this.context;
     const { productInfo, productAttributesAreFilled, setPreferencesFunction, productPreferences } =
       this.props;
+    console.log(productInfo);
+
     return (
       <ProductPreferencesContainer>
         <div>
@@ -25,29 +28,25 @@ export default class ProductPreferences extends React.Component {
             <AttributeHandler
               key={attr.id}
               attribute={attr}
-              outOfStock={productInfo.inStock}
+              outOfStock={!productInfo.inStock}
               setPreferencesFunction={setPreferencesFunction}
             />
           ))}
         <div>
           <div>
             <h4>Price:</h4>
-            <span>{getCurrencyFromList(productInfo.prices, selectedCurrency.label)}</span>
+            <span>{getPriceAndCurrencyFromList(productInfo.prices, selectedCurrency)}</span>
           </div>
           <AddToCardButton
             rectangle
-            outOfStock={productInfo.inStock}
+            outOfStock={!productInfo.inStock}
             productAttributesAreFilled={
               productInfo.attributes?.length ? productAttributesAreFilled : true
             }
             addToCartObject={productPreferences}
           />
         </div>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: productInfo && productInfo.description,
-          }}
-        />
+        <div>{parse(productInfo && productInfo.description)}</div>
       </ProductPreferencesContainer>
     );
   }

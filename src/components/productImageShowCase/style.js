@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ShowCaseContainer = styled.section`
+export const Container = styled.section`
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -8,7 +8,8 @@ export const ShowCaseContainer = styled.section`
   width: 100%;
   margin: 0 auto;
 
-  div {
+  > div {
+    position: relative;
     width: 100%;
     height: 320px;
     max-width: 610px;
@@ -29,7 +30,7 @@ export const ShowCaseContainer = styled.section`
     margin: 0;
     gap: 40px;
 
-    div {
+    > div {
       height: 100%;
       margin: 0;
     }

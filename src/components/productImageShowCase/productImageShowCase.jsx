@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+import OutOfStockOverlay from '../outOfStockOverlay';
 import * as S from './style';
 
 export default class ProductImageShowCase extends React.Component {
@@ -50,7 +51,7 @@ export default class ProductImageShowCase extends React.Component {
     const { selectedImage, productName, imageList } = this.state;
 
     return (
-      <S.ShowCaseContainer>
+      <S.Container>
         <S.ShowCaseList>
           {imageList.map((img) => (
             <li key={img}>
@@ -61,9 +62,10 @@ export default class ProductImageShowCase extends React.Component {
           ))}
         </S.ShowCaseList>
         <div>
+          <OutOfStockOverlay />
           <img src={selectedImage} alt={productName} />
         </div>
-      </S.ShowCaseContainer>
+      </S.Container>
     );
   }
 }

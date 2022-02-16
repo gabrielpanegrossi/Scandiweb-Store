@@ -48,8 +48,12 @@ const ProductPreferencesContainer = styled.section`
   }
 
   > div:last-child {
-    ul li:not(:last-child) {
-      margin-bottom: 15px;
+    ul {
+      list-style: initial;
+
+      li:not(:last-child) {
+        margin-bottom: 15px;
+      }
     }
 
     span {
