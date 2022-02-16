@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import getProductsByCategoryName from '../../services/database/getProductsByCategoryName';
+import getProductById from '../../services/database/getProductById';
 import ProductList from '../../components/productList/index';
 import * as S from './style';
 
@@ -29,11 +30,26 @@ export default class Category extends React.Component {
   }
 
   async queryCategory(category) {
-    const categoryInformation = await getProductsByCategoryName(category).then(
-      (data) => data.category
+    const categoryInformation = await getProductsByCategoryName(category);
+    const productArr = categoryInformation.category.products.map((product) =>
+      getProductById(product.id)
     );
 
-    this.setState({ category: categoryInformation });
+    const productArrResolved = await Promise.all(productArr);
+
+    const treatedProductList = categoryInformation.category.products.map((product, index) => ({
+      id: product.id,
+      ...productArrResolved[index].product,
+    }));
+
+    const categoryResult = {
+      name: categoryInformation.category.name,
+      products: treatedProductList,
+    };
+
+    this.setState({
+      category: categoryResult,
+    });
   }
 
   checkUrlParams() {

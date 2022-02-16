@@ -15,7 +15,6 @@ export default class ProductPreferences extends React.Component {
     const { selectedCurrency } = this.context;
     const { productInfo, productAttributesAreFilled, setPreferencesFunction, productPreferences } =
       this.props;
-    console.log(productInfo);
 
     return (
       <ProductPreferencesContainer>

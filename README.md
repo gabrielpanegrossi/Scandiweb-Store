@@ -1,12 +1,18 @@
 # Scandi Store
 
-Is a e-commerce store built from scratch in React.js for a React job position for ScandiWeb.
+Is a eccomerce store built from scratch in React.js for a React job position for ScandiWeb.
 
 On this store you will be able to add products to your cart, selecting the products attributes and also quantity, navigating throught category pages with an great and smooth experience.
 
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`REACT_APP_GRAPHQL_URL` = the URL for the graphQL consuming.
+
 ## Lessons Learned
 
-The most challeging functionality was making the products with the same id but different attributes sum quantity on the cart, it was an amazing logical problem for me, it was a great experience to build this component the most reusable as possible to use it also on the "Bag" page.
+The most challeging functionality was making the products with the same id but different attributes sum quantity on the cart, it was an amazing logical problem for me, and also was a great experience to build this component the most reusable as possible to use it also on the "Bag" page.
 
 ## Demo
 

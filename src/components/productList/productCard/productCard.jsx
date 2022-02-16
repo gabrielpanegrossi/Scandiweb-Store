@@ -11,7 +11,6 @@ import ProductCardContainer from './style';
 export default class ProductCard extends React.Component {
   render() {
     const { productInformation, currentCurrency } = this.props;
-
     return (
       <ProductCardContainer>
         <Link to={`/product/${productInformation.id}`}>
@@ -20,7 +19,7 @@ export default class ProductCard extends React.Component {
             <img src={productInformation.gallery[0]} alt='' />
           </div>
           <div>
-            <h3>{productInformation.name}</h3>
+            <h3>{`${productInformation.name} ${productInformation.brand}`}</h3>
             <span>{getPriceAndCurrencyFromList(productInformation.prices, currentCurrency)}</span>
           </div>
         </Link>
@@ -39,6 +38,7 @@ ProductCard.propTypes = {
   productInformation: propTypes.shape({
     id: propTypes.string.isRequired,
     name: propTypes.string.isRequired,
+    brand: propTypes.string.isRequired,
     prices: propTypes.arrayOf(propTypes.shape({})).isRequired,
     attributes: propTypes.arrayOf(propTypes.shape({})).isRequired,
     gallery: propTypes.arrayOf(propTypes.string).isRequired,
