@@ -75,10 +75,13 @@ export default class Product extends React.Component {
 
   render() {
     const { productInfo, productAttributesAreFilled, productPreferences } = this.state;
-
     return (
       <S.ProductContainer>
-        <ProductImageShowCase imgList={productInfo.gallery} productName={productInfo.name} />
+        <ProductImageShowCase
+          imgList={productInfo.gallery}
+          productName={productInfo.name}
+          outOfStock={!productInfo.inStock}
+        />
         <ProductPreferences
           productInfo={productInfo}
           productAttributesAreFilled={productAttributesAreFilled}

@@ -48,6 +48,7 @@ export default class ProductImageShowCase extends React.Component {
   }
 
   render() {
+    const { outOfStock } = this.props;
     const { selectedImage, productName, imageList } = this.state;
 
     return (
@@ -62,7 +63,7 @@ export default class ProductImageShowCase extends React.Component {
           ))}
         </S.ShowCaseList>
         <div>
-          <OutOfStockOverlay />
+          {outOfStock && <OutOfStockOverlay />}
           <img src={selectedImage} alt={productName} />
         </div>
       </S.Container>
@@ -73,4 +74,5 @@ export default class ProductImageShowCase extends React.Component {
 ProductImageShowCase.propTypes = {
   productName: propTypes.string.isRequired,
   imgList: propTypes.arrayOf(propTypes.string.isRequired).isRequired,
+  outOfStock: propTypes.bool.isRequired,
 };

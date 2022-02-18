@@ -2,7 +2,7 @@ import { client, Query } from '@tilework/opus';
 
 const { REACT_APP_GRAPHQL_URL } = process.env;
 
-const getProductsByCategoryName = async (categoryName) => {
+const getProductsByCategory = async (categoryName) => {
   client.setEndpoint(REACT_APP_GRAPHQL_URL);
 
   const query = new Query(
@@ -28,4 +28,4 @@ const getProductsByCategoryName = async (categoryName) => {
   return queryResult;
 };
 
-export default getProductsByCategoryName;
+export default getProductsByCategory;
