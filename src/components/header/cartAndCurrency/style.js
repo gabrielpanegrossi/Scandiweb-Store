@@ -12,10 +12,6 @@ export const CartAndCurrencyContainer = styled.div`
   > ul {
     gap: 22px;
 
-    li {
-      cursor: pointer;
-    }
-
     a {
       height: fit-content;
     }

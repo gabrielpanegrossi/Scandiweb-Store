@@ -72,10 +72,14 @@ export const CartItemList = styled.ul`
       width: 40%;
       max-height: ${(props) => (props.isContainer ? '225px' : 'auto')};
 
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: contain;
+      a {
+        height: ${(props) => (props.isContainer ? '225px' : '100%')};
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
       }
     }
   }

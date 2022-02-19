@@ -26,7 +26,10 @@ export default class CartBox extends React.Component {
                     <h5>{item.productObj.brand}</h5>
                   </div>
                   <span>
-                    {getPriceAndCurrencyFromList(item.productObj.prices, selectedCurrency)}
+                    {`${selectedCurrency.symbol}${getPriceAndCurrencyFromList(
+                      item.productObj.prices,
+                      selectedCurrency
+                    )}`}
                   </span>
                   {item.productObj.attributes && (
                     <ul>

@@ -20,7 +20,10 @@ export default class ProductCard extends React.Component {
           </div>
           <div>
             <h3>{`${productInformation.name} ${productInformation.brand}`}</h3>
-            <span>{getPriceAndCurrencyFromList(productInformation.prices, currentCurrency)}</span>
+            <span>{`${currentCurrency.symbol}${getPriceAndCurrencyFromList(
+              productInformation.prices,
+              currentCurrency
+            )}`}</span>
           </div>
         </Link>
         {productInformation.inStock && !productInformation.attributes.length > 0 ? (
@@ -44,5 +47,7 @@ ProductCard.propTypes = {
     gallery: propTypes.arrayOf(propTypes.string).isRequired,
     inStock: propTypes.bool.isRequired,
   }).isRequired,
-  currentCurrency: propTypes.shape({ label: propTypes.string.isRequired }).isRequired,
+  currentCurrency: propTypes.shape({
+    symbol: propTypes.string.isRequired,
+  }).isRequired,
 };

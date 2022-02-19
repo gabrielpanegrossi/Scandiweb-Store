@@ -34,7 +34,10 @@ export default class ProductPreferences extends React.Component {
         <div>
           <div>
             <h4>Price:</h4>
-            <span>{getPriceAndCurrencyFromList(productInfo.prices, selectedCurrency)}</span>
+            <span>{`${selectedCurrency.symbol}${getPriceAndCurrencyFromList(
+              productInfo.prices,
+              selectedCurrency
+            )}`}</span>
           </div>
           <AddToCardButton
             rectangle

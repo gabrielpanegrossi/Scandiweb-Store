@@ -34,28 +34,33 @@ export default class Product extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { attributesSet, attributesToBeSet, productAttributesAreFilled } = this.state;
+    const { match } = this.props;
 
     if (prevState.attributesSet !== attributesSet) {
       if (attributesSet === attributesToBeSet && productAttributesAreFilled === false) {
         this.toggleAddToCartButton();
       }
     }
+
+    if (prevProps.match.params.productId !== match.params.productId) {
+      this.queryProduct();
+    }
   }
 
   setProductPreferences = (attributeId, optionId) => {
     const { productInfo, productPreferences, attributesToBeSet, attributesSet } = this.state;
+
+    if (!productPreferences[attributeId] && attributesSet < productInfo.attributes.length) {
+      this.setState({
+        attributesSet: attributesSet + 1,
+      });
+    }
 
     productPreferences[attributeId] = optionId;
 
     if (attributesToBeSet !== productInfo.attributes.length) {
       this.setState({
         attributesToBeSet: productInfo.attributes.length,
-      });
-    }
-
-    if (attributesSet < productInfo.attributes.length) {
-      this.setState({
-        attributesSet: attributesSet + 1,
       });
     }
   };

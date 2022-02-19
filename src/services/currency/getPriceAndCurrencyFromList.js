@@ -3,8 +3,7 @@ function getPriceAndCurrencyFromList(currencyList, currentCurrency) {
     let result;
 
     currencyList.forEach((item) => {
-      if (item.currency.label === currentCurrency.label)
-        result = `${currentCurrency.symbol} ${item.amount}`;
+      if (item.currency.label === currentCurrency.label) result = item.amount;
     });
 
     return result;

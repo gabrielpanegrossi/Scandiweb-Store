@@ -40,16 +40,22 @@ export default class Cart extends React.Component {
           <S.cartTotalContainer>
             <span>Total</span>
             <span>
-              {cartItems.length > 0
-                ? `${cartItems
-                    .map(
-                      (item) =>
-                        item.quantity *
-                        getPriceAndCurrencyFromList(item.productObj.prices, selectedCurrency)
-                    )
-                    .reduce((acc, current) => acc + current)
-                    .toFixed(2)}`
-                : 0}
+              {`${selectedCurrency.symbol}${
+                cartItems.length > 0
+                  ? `${cartItems
+                      .map(
+                        (item) =>
+                          item.quantity *
+                          getPriceAndCurrencyFromList(
+                            item.productObj.prices,
+                            selectedCurrency,
+                            true
+                          )
+                      )
+                      .reduce((acc, current) => acc + current)
+                      .toFixed(2)}`
+                  : 0
+              }`}
             </span>
           </S.cartTotalContainer>
           <S.cartActionsContainer>

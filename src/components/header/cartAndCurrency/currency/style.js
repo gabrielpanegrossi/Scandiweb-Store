@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 const CurrencyMenuTrigger = styled.li`
+  display: flex;
+  justify-content: flex-end;
   position: relative;
-  width: 40px;
+  width: 45px;
+  cursor: pointer;
 
   .currency-wrapper {
     display: flex;

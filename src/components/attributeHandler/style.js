@@ -53,15 +53,17 @@ export const AtributeText = styled.span`
   border: 1px solid ${(props) => (props.outOfStock ? '#A6A6A6' : '#a6a6a6')};
 
   &.selected {
-    ${(props) =>
-      props.isColor ? 'border:1px solid #1D1F22;' : 'background:#1D1F22;color:#ffffff;'};
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #1d1f22;
+    ${(props) => (props.isColor ? '' : 'background:#1D1F22;color:#ffffff;')};
   }
 `;
 
 export const CartAtributeOption = styled.li`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   height: 24px;
   min-height: 24px;
   max-height: fit-content;
@@ -69,16 +71,14 @@ export const CartAtributeOption = styled.li`
   max-width: fit-content;
   min-width: 24px;
   margin-bottom: 12px;
-  cursor: pointer;
   background: ${(props) => (props.isColor ? props.isColor : 'unset')};
-  border: 1px solid ${(props) => (props.outOfStock ? '#A6A6A6' : '#a6a6a6')};
+  border: 1px solid #a6a6a6;
 
   :not(:last-child) {
     margin-right: 12px;
   }
 
   @media (min-width: 769px) {
-    max-width: 24px;
     margin-bottom: 0;
 
     :not(:last-child) {
@@ -91,10 +91,7 @@ export const CartAtributeText = styled.span`
   display: block;
   text-align: center;
   font-size: 14px;
-  width: 24px;
-  padding: 0 2px;
+  width: fit-content;
+  padding: 0 5px;
   color: ${(props) => (props.outOfStock ? '#A6A6A6' : '#292929')};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 `;
