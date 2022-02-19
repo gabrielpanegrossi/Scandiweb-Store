@@ -8,7 +8,7 @@ On this store you will be able to add products to your cart, selecting the produ
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`REACT_APP_GRAPHQL_URL` = the URL for the graphQL consuming.
+`REACT_APP_GRAPHQL_URL` = the URL for graphQL consuption.
 
 ## Lessons Learned
 
